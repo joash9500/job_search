@@ -77,3 +77,20 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+---
+
+## Dependencies needed (if not using Expo)
+1. Without Expo, we need to install ```react-native-screens``` and ```react-native-safe-area-context```
+```
+yarn add react-native-screens react-native-safe-area-context
+```
+2. To use the native-stack navigator, we need ```react-navigation/native-stack```
+```
+yarn add @react-navigation/native-stack
+```
+3. Pods should already be installed. If not installed, and developing for iOs
+```
+npx pod-install ios
+```
+Otherwise, if developing for android, please refer to the react navigation docs [here](https://reactnavigation.org/docs/getting-started) 
