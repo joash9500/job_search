@@ -94,3 +94,12 @@ yarn add @react-navigation/native-stack
 npx pod-install ios
 ```
 Otherwise, if developing for android, please refer to the react navigation docs [here](https://reactnavigation.org/docs/getting-started) 
+
+4. axios installed for backend requests
+```
+yarn add axios
+```
+5. react-native-dotenv to handle environmental variables in your app during development. note "-D" is used here as we like to install this as a development dependency - ie we don't want this installed when we have the app in production!
+```
+yarn add -D react-native-dotenv
+```
