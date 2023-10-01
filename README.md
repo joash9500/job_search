@@ -103,3 +103,10 @@ yarn add axios
 ```
 yarn add -D react-native-dotenv
 ```
+6. to create a splash screen for mobile app.
+```
+yarn add react-native-splash-screen
+```
+then navigate into AppDelegate.mm in the ios folder and add the code ```#import 'RNSplashScreen``` and set the splash screen to show by default ```[RNSPlashScreen show]```
+
+7. custom icons. you can get icons from [Icon Kitchen](https://icon.kitchen/i/H4sIAAAAAAAAA6tWKkvMKU0tVrKqVkpJLMoOyUjNTVWySkvMKU6t1VHKzU8pzQHJRisl5qUU5WemKOkoZeYXA8ny1CSl2FoApT8%2BHkAAAAA%3D)

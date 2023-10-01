@@ -1,45 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
   Button,
   SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-//for navigation in react-native app
+//for navigation/routing in react-native app
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { create } from 'react-test-renderer';
+
+//templates from tutorial
+import { COLORS, icons, images, SIZES} from './constants'
+import {
+  Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome
+} from './components'
 
 // home screen page
 function HomeScreen({navigation}): JSX.Element {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text> Home Screen </Text>
-      <Button 
-        title='Details'
-        onPress={()=> navigation.navigate("Details")}/>
-    </View>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{flex:1, padding: SIZES.medium}}>
+          <Welcome
+
+          />
+          <Popularjobs/>
+          <Nearbyjobs/>
+        </View>
+
+      </ScrollView>
+      <TouchableOpacity onPress={()=> navigation.navigate("Details")}>
+            <Text>Details</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
   )
 }
 
@@ -88,7 +85,18 @@ function App(): JSX.Element {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} 
+          options={{
+            headerStyle: {backgroundColor: COLORS.lightWhite},
+            headerShadowVisible: false,
+            headerLeft: () => (
+              <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%"/>
+            ),
+            headerRight: () => (
+              <ScreenHeaderBtn iconUrl={images.profile} dimension="100%"/>
+            ),
+            headerTitle: ""
+          }}/>
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="Deposit" component={DepositScreen} />
       </Stack.Navigator>
