@@ -7,7 +7,6 @@ import { StyleSheet } from 'react-native';
 
 //splashscreen 
 
-
 //custom styles
 const styles = StyleSheet.create({
     DMBold: {

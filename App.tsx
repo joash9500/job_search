@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Button,
   SafeAreaView,
@@ -12,6 +12,9 @@ import {
 //for navigation/routing in react-native app
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+//splash screen for loading page transition/launch page
+import SplashScreen from 'react-native-splash-screen';
 
 //templates from tutorial
 import { COLORS, icons, images, SIZES} from './constants'
@@ -82,6 +85,11 @@ function DepositScreen({navigation}): JSX.Element {
 const Stack = createNativeStackNavigator()
 
 function App(): JSX.Element {
+  //launch page
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -121,6 +129,15 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  DMBold: {
+    fontFamily: "DMSans-Bold"
+  },
+  DMMedium: {
+    fontFamily: "DMSans-Medium"
+  },
+  DMRegular: {
+    fontFamily: "DMSans-Regular"
+  }
 });
 
 export default App;
