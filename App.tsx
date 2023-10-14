@@ -13,14 +13,12 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-//splash screen for loading page transition/launch page
-import SplashScreen from 'react-native-splash-screen';
-
 //templates from tutorial
 import { COLORS, icons, images, SIZES} from './constants'
 import {
   Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome
 } from './components'
+import SplashScreen from 'react-native-splash-screen';
 
 // home screen page
 function HomeScreen({navigation}): JSX.Element {
@@ -85,7 +83,7 @@ function DepositScreen({navigation}): JSX.Element {
 const Stack = createNativeStackNavigator()
 
 function App(): JSX.Element {
-  //launch page
+
   useEffect(() => {
     SplashScreen.hide();
   }, []);

@@ -5,7 +5,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 //for styles
 import { StyleSheet } from 'react-native';
 
-//splashscreen 
+const Layout = () => {
+     
+ }
 
 //custom styles
 const styles = StyleSheet.create({
@@ -16,6 +18,6 @@ const styles = StyleSheet.create({
         fontFamily: 'DMSans-Medium'
     },
     DMRegular: {
-        fontFamily: DMSans-Regular
+        fontFamily: "DMSans-Regular"
     }
 })
