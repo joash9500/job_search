@@ -21,11 +21,9 @@ const DATA = [
   },
 ];
 
-const Welcome = () => {
-
+const Welcome = ({navigation}) => {
   // creating a state variable for active job types
   const [activeJobType, setActiveJobType] = useState("full-time")
-
   return (
     <View>
       <View style={styles.container}>
@@ -51,16 +49,23 @@ const Welcome = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.tabsContainer}> 
-        <FlatList 
+      {/* no nesting of FlatList in view container as FlatList already has a scrollable view */}
+      <FlatList 
           data={jobTypes}
           renderItem={({item}) => (
-            <TouchableOpacity>
-              <Text>{item}</Text>
+            <TouchableOpacity 
+              style={styles.tab(activeJobType, item)} 
+              onPress={() => {
+                setActiveJobType(item)
+                navigation.navigate('ItemScreen')
+              }}>
+              <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
             </TouchableOpacity>
           )}
-        />
-      </View>
+          keyExtractor={item => item}
+          contentContainerStyle={{ columnGap: SIZES.small}}
+          horizontal
+      />
 
     </View>
   )

@@ -8,17 +8,17 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
+//splash screen for transitions
+import SplashScreen from 'react-native-splash-screen';
 //for navigation/routing in react-native app
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-
 //templates from tutorial
 import { COLORS, icons, images, SIZES} from './constants'
 import {
   Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome
 } from './components'
-import SplashScreen from 'react-native-splash-screen';
+import ItemScreen from './components/temp/item';
 
 // home screen page
 function HomeScreen({navigation}): JSX.Element {
@@ -26,13 +26,12 @@ function HomeScreen({navigation}): JSX.Element {
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{flex:1, padding: SIZES.medium}}>
-          <Welcome
-
-          />
+          <Welcome 
+            navigation = {navigation}
+            />
           <Popularjobs/>
           <Nearbyjobs/>
         </View>
-
       </ScrollView>
       <TouchableOpacity onPress={()=> navigation.navigate("Details")}>
             <Text>Details</Text>
@@ -62,23 +61,6 @@ function DetailsScreen({navigation}) {
   );
 }
 
-// deposit screen page
-function DepositScreen({navigation}): JSX.Element {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text> Deposit Screen </Text>
-      <Button
-        title="Go Back"
-        onPress={() => navigation.goBack()}
-      />
-      <Button
-        title="Go Back to first screen in stack"
-        onPress={() => navigation.popToTop()}
-      />
-    </View>
-  )
-}
-
 // for navigation. contains two properties: screen and navigator 
 const Stack = createNativeStackNavigator()
 
@@ -90,7 +72,7 @@ function App(): JSX.Element {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name="Home" component={HomeScreen} 
           options={{
             headerStyle: {backgroundColor: COLORS.lightWhite},
@@ -101,10 +83,10 @@ function App(): JSX.Element {
             headerRight: () => (
               <ScreenHeaderBtn iconUrl={images.profile} dimension="100%"/>
             ),
-            headerTitle: ""
+            headerTitle: "" 
           }}/>
-        <Stack.Screen name="Details" component={DetailsScreen} />
-        <Stack.Screen name="Deposit" component={DepositScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen}/>
+        <Stack.Screen name="ItemScreen" component={ItemScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -133,7 +115,7 @@ const styles = StyleSheet.create({
   DMMedium: {
     fontFamily: "DMSans-Medium"
   },
-  DMRegular: {
+  DMRegular: {     
     fontFamily: "DMSans-Regular"
   }
 });

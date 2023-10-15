@@ -1,3 +1,6 @@
+import React from 'react';
+import App from '../App';
+
 import ScreenHeaderBtn from "./common/header/ScreenHeaderBtn";
 
 // home screen
@@ -14,6 +17,8 @@ import Specifics from "./jobdetails/specifics/Specifics";
 
 // common
 import NearbyJobCard from "./common/cards/nearby/NearbyJobCard";
+import { NavigationContainer } from '@react-navigation/native';
+import { AppRegistry } from 'react-native';
 
 export {
   ScreenHeaderBtn,
@@ -27,3 +32,15 @@ export {
   Specifics,
   NearbyJobCard
 };
+
+const AppComponent = () => {
+  <NavigationContainer>
+    <App/>
+  </NavigationContainer>
+}
+
+AppRegistry.registerComponent('job_search', () => AppComponent)
+
+
+
+
