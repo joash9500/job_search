@@ -24,7 +24,6 @@ import ItemScreen from './components/temp/item';
 function HomeScreen({navigation}): JSX.Element {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
-      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{flex:1, padding: SIZES.medium}}>
           <Welcome 
             navigation = {navigation}
@@ -32,7 +31,6 @@ function HomeScreen({navigation}): JSX.Element {
           <Popularjobs/>
           <Nearbyjobs/>
         </View>
-      </ScrollView>
       <TouchableOpacity onPress={()=> navigation.navigate("Details")}>
             <Text>Details</Text>
       </TouchableOpacity>
@@ -65,7 +63,6 @@ function DetailsScreen({navigation}) {
 const Stack = createNativeStackNavigator()
 
 function App(): JSX.Element {
-
   useEffect(() => {
     SplashScreen.hide();
   }, []);
