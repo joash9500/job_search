@@ -10,10 +10,10 @@ const Popularjobs = () => {
 
   const {data, isLoading, error} = useFetch('search', {
     query: 'React',
-    num_pages: 1
+    num_pages: "1"
   })
 
-  // console.log(data)
+  const [selectedJob, setSelectedJob] = useState()
 
   return (
     <View style={styles.container}>
@@ -37,7 +37,6 @@ const Popularjobs = () => {
                 item={item}
               />
             )}
-
             keyExtractor={item => item.job_id}
             contentContainerStyle={{columnGap: SIZES.medium}}
             horizontal
