@@ -1,62 +1,23 @@
 import React, { useEffect } from 'react';
-import {
-  Button,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
 //splash screen for transitions
 import SplashScreen from 'react-native-splash-screen';
+//other screens
+import ItemScreen from './components/temp/item';
+import HomeScreen from './screens/homeScreen';
+import DetailScreen from './screens/detailScreen';
+
 //for navigation/routing in react-native app
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 //templates from tutorial
-import { COLORS, icons, images, SIZES} from './constants'
-import {
-  Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome
-} from './components'
-import ItemScreen from './components/temp/item';
+import { COLORS, icons, images} from './constants'
+import { ScreenHeaderBtn } from './components'
 
-// home screen page
-function HomeScreen({navigation}): JSX.Element {
-  return (
-    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{flex:1, padding: SIZES.medium}}>
-            <Welcome navigation = {navigation}/>
-            <Popularjobs/>
-            <Nearbyjobs/>
-          </View>
-        <TouchableOpacity onPress={()=> navigation.navigate("Details")}>
-              <Text>Details</Text>
-        </TouchableOpacity>
-      </ScrollView>
-    </SafeAreaView>
-  )
-}
-
-// details screen page
-function DetailsScreen({navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Deposit"
-        onPress={() => navigation.navigate('Deposit')}
-      />
-      <Button
-        title="Go Back"
-        onPress={() => navigation.goBack()}
-      />
-      <Button
-        title="Go Back to first screen in stack"
-        onPress={() => navigation.popToTop()}
-      />
-    </View>
-  );
+// configure screens here
+const screens = {
+  Home: {
+    screen: HomeScreen,
+  }
 }
 
 // for navigation. contains two properties: screen and navigator 
@@ -66,9 +27,7 @@ function App(): JSX.Element {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
-
   // should only have ONE navigation container in your app, at the root. best not to nest multiple nav containers.
-
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
@@ -84,39 +43,11 @@ function App(): JSX.Element {
             ),
             headerTitle: "" 
           }}/>
-        <Stack.Screen name="Details" component={DetailsScreen}/>
+        <Stack.Screen name="Details" component={DetailScreen}/>
         <Stack.Screen name="ItemScreen" component={ItemScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  DMBold: {
-    fontFamily: "DMSans-Bold"
-  },
-  DMMedium: {
-    fontFamily: "DMSans-Medium"
-  },
-  DMRegular: {     
-    fontFamily: "DMSans-Regular"
-  }
-});
 
 export default App;
