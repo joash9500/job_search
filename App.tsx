@@ -24,16 +24,16 @@ import ItemScreen from './components/temp/item';
 function HomeScreen({navigation}): JSX.Element {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{flex:1, padding: SIZES.medium}}>
-          <Welcome 
-            navigation = {navigation}
-            />
-          <Popularjobs/>
-          <Nearbyjobs/>
-        </View>
-      <TouchableOpacity onPress={()=> navigation.navigate("Details")}>
-            <Text>Details</Text>
-      </TouchableOpacity>
+            <Welcome navigation = {navigation}/>
+            <Popularjobs/>
+            <Nearbyjobs/>
+          </View>
+        <TouchableOpacity onPress={()=> navigation.navigate("Details")}>
+              <Text>Details</Text>
+        </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   )
 }
@@ -66,6 +66,8 @@ function App(): JSX.Element {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
+
+  // should only have ONE navigation container in your app, at the root. best not to nest multiple nav containers.
 
   return (
     <NavigationContainer>

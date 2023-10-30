@@ -26,19 +26,12 @@ const Nearbyjobs = () => {
         ) : error ? (
           <Text>Something went wrong</Text>
         ) : (
-          // data?.map((job) => (
-          //   <NearbyJobCard
-          //     job={job}
-          //     key={`nearby-job-${job?.job_id}`}
-          //     // handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
-          //   />
-          // ))
           <FlatList
             data={data}
             renderItem={({item}) => (
               <NearbyJobCard
                 job={item}
-                // key={`nearby-job-${job?.job_id}`}
+                key={`nearby-job-${item?.job_id}`}
                 // handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
               />
             )}
