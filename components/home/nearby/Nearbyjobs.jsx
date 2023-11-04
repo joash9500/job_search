@@ -4,7 +4,7 @@ import {COLORS} from '../../../constants'
 import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard'
 import useFetch from '../../../hook/useFetch'
 
-const Nearbyjobs = () => {
+const Nearbyjobs = ({navigation}) => {
 
   const {data, isLoading, error} = useFetch('search', {   
     query: 'React',
@@ -32,7 +32,9 @@ const Nearbyjobs = () => {
               <NearbyJobCard
                 job={item}
                 key={`nearby-job-${item?.job_id}`}
-                // handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
+                handleNavigate={() => navigation.navigate('JobDetails', {
+                  job_id: item?.job_id
+                })}
               />
             )}
           />

@@ -9,10 +9,10 @@ function HomeScreen({navigation}): JSX.Element {
           <View style={{flex:1, padding: SIZES.medium}}>
               <Welcome navigation = {navigation}/>
               <Popularjobs/>
-              <Nearbyjobs/>
+              <Nearbyjobs navigation = {navigation}/>
             </View>
           <TouchableOpacity onPress={()=> navigation.navigate("Details")}>
-                <Text>Details</Text>
+              <Text>Details</Text>
           </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>

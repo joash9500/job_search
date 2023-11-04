@@ -3,8 +3,9 @@ import React, { useEffect } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 //other screens
 import ItemScreen from './components/temp/item';
-import HomeScreen from './screens/homeScreen';
-import DetailScreen from './screens/detailScreen';
+import HomeScreen from './app/homeScreen';
+import DetailScreen from './app/detailScreen';
+import JobDetails from './app/job-details/[id]';
 
 //for navigation/routing in react-native app
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,13 +13,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 //templates from tutorial
 import { COLORS, icons, images} from './constants'
 import { ScreenHeaderBtn } from './components'
-
-// configure screens here
-const screens = {
-  Home: {
-    screen: HomeScreen,
-  }
-}
 
 // for navigation. contains two properties: screen and navigator 
 const Stack = createNativeStackNavigator()
@@ -31,7 +25,7 @@ function App(): JSX.Element {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen name="Home" component={HomeScreen} 
+        <Stack.Screen name="Home" component={HomeScreen}            
           options={{
             headerStyle: {backgroundColor: COLORS.lightWhite},
             headerShadowVisible: false,
@@ -45,6 +39,7 @@ function App(): JSX.Element {
           }}/>
         <Stack.Screen name="Details" component={DetailScreen}/>
         <Stack.Screen name="ItemScreen" component={ItemScreen}/>
+        <Stack.Screen name="JobDetails" component={JobDetails}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
