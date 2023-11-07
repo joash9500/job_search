@@ -39,7 +39,28 @@ function App(): JSX.Element {
           }}/>
         <Stack.Screen name="Details" component={DetailScreen}/>
         <Stack.Screen name="ItemScreen" component={ItemScreen}/>
-        <Stack.Screen name="JobDetails" component={JobDetails}/>
+        <Stack.Screen name="JobDetails" component={JobDetails}
+          options={({navigation}) => ({
+            headerStyle: { backgroundColor: COLORS.lightWhite},
+            headerShadowVisible: false,
+            headerBackVisible: false,
+            headerLeft: () => (
+                <ScreenHeaderBtn
+                iconUrl={icons.left}
+                dimension="60%"
+                handlePress={() => navigation.goBack()}
+                />
+            ),
+            headerRight: () => (
+              <ScreenHeaderBtn
+                iconUrl={icons.share}
+                dimension="60%"
+              />
+            ),
+            headerTitle: ''
+          })
+        }
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
