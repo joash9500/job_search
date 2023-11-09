@@ -9,7 +9,7 @@ import useFetch from '../../../hook/useFetch'
 const Popularjobs = () => {
 
   const {data, isLoading, error} = useFetch('search', {
-    query: 'React',
+    query: 'react',
     num_pages: "1"
   })
 

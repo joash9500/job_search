@@ -22,12 +22,22 @@ const JobDetails = ({route, navigation}) => {
             case "Qualifications":
                 // ?? operator returns the right hand value when the left hand is null or undefined.
                 return (
-                <Specifics
-                    title="Qualifications"
-                    points={data[0].job_highlights?.Qualifications ?? ['N/A']}
-                />)
+                    <Specifics
+                        title="Qualifications"
+                        points={data[0].job_highlights?.Qualifications ?? ['N/A']}
+                    />)
             case "About":
-            case "Responsbilities":
+                return (
+                    <JobAbout
+                        info={data[0].job_description ?? "No data provided"}
+                    />
+                ) 
+            case "Responsibilities":
+                return (
+                    <Specifics
+                        title='Responsibilities'
+                        points={data[0].job_highlights?.Responsibilities ?? ["N/A"]}
+                    />)
             default:
                 break;
         }

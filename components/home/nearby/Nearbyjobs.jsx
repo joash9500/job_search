@@ -7,7 +7,7 @@ import useFetch from '../../../hook/useFetch'
 const Nearbyjobs = ({navigation}) => {
 
   const {data, isLoading, error} = useFetch('search', {   
-    query: 'React',
+    query: 'react',
     num_pages: "1"
   })
 
