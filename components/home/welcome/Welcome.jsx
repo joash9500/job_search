@@ -21,7 +21,7 @@ const DATA = [
   },
 ];
 
-const Welcome = ({navigation}) => {
+const Welcome = ({navigation, searchTerm, setSearchTerm, handleClick}) => {
   // creating a state variable for active job types
   const [activeJobType, setActiveJobType] = useState("full-time")
   return (
@@ -35,12 +35,12 @@ const Welcome = ({navigation}) => {
         <View style={styles.searchWrapper}>
           <TextInput 
             style={styles.searchInput}
-            value=""
-            onChange={() => {}}
+            value={searchTerm}
+            onChange={(text) => setSearchTerm(text)}
             placeholder='what are you looking for?'
           ></TextInput>
         </View>
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
           <Image
             source={icons.search}
             resizeMode="contain"
@@ -57,7 +57,8 @@ const Welcome = ({navigation}) => {
               style={styles.tab(activeJobType, item)} 
               onPress={() => {
                 setActiveJobType(item)
-                navigation.navigate('ItemScreen')
+                // update navigation route
+                navigation.navigate('')
               }}>
               <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
             </TouchableOpacity>

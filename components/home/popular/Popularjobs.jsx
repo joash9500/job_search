@@ -6,14 +6,22 @@ import {COLORS, SIZES} from '../../../constants'
 import PopularJobCard from '../../common/cards/popular/PopularJobCard'
 import useFetch from '../../../hook/useFetch'
 
-const Popularjobs = () => {
+const Popularjobs = ({navigation}) => {
 
   const {data, isLoading, error} = useFetch('search', {
     query: 'react',
     num_pages: "1"
   })
 
-  const [selectedJob, setSelectedJob] = useState()
+  const [selectedJob, setSelectedJob] = useState(0)
+
+  // ALTERNATIVE way for page navigation (different to NearbyJobs)
+  const handleCardPress = (item) => {
+    setSelectedJob(item.job_id)
+    navigation.navigate('JobDetails', {
+      job_id: item?.job_id
+    })
+  }
 
   return (
     <View style={styles.container}>
@@ -35,6 +43,9 @@ const Popularjobs = () => {
             renderItem={({item}) => (
               <PopularJobCard
                 item={item}
+                selectedJob={selectedJob}
+                // pass in the handleCardPress function that opens the job with id
+                handleCardPress={handleCardPress}
               />
             )}
             keyExtractor={item => item.job_id}

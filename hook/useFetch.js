@@ -28,7 +28,7 @@ const useFetch = (endpoint, query) => {
             setIsLoading(false)
         } catch (error) {
             setError(error)
-            Alert('AN error occured')
+            console.log('AN error occured')
         } finally {
             setIsLoading(false)
         }
@@ -43,7 +43,9 @@ const useFetch = (endpoint, query) => {
         setIsLoading(true);
         fetchData();
     }
+
     return {data, isLoading, error, refetch}
+
 }
 
 export default useFetch

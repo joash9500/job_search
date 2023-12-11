@@ -42,7 +42,7 @@ const JobDetails = ({route, navigation}) => {
                 break;
         }
     }
-
+  
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}> 
             <ScrollView showsVerticalScrollIndicator={false} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}>
@@ -69,6 +69,9 @@ const JobDetails = ({route, navigation}) => {
                     </View>
                 )}
             </ScrollView>
+
+            {/* note the footer is outside the scrollview so its out of scope and independent */}
+            <JobFooter url={data[0]?.job_google_link ?? 'https://careers.google.com/jobs/results'}/>
 
         </SafeAreaView>
     )
