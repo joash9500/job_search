@@ -6,6 +6,7 @@ import ItemScreen from './components/temp/item';
 import HomeScreen from './app/homeScreen';
 import DetailScreen from './app/detailScreen';
 import JobDetails from './app/job-details/[id]';
+import JobSearch from './app/search/[id]'
 
 //for navigation/routing in react-native app
 import { NavigationContainer } from '@react-navigation/native';
@@ -61,6 +62,20 @@ function App(): JSX.Element {
           })
         }
         />
+        <Stack.Screen name='JobSearch' component={JobSearch}
+          options={({navigation}) => ({
+            headerStyle: { backgroundColor: COLORS.lightWhite },
+                    headerShadowVisible: false,
+                    headerLeft: () => (
+                        <ScreenHeaderBtn
+                            iconUrl={icons.left}
+                            dimension='60%'
+                            handlePress={() => navigation.goBack()}
+                        />
+                    ),
+                    headerTitle: "",
+            })}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   );

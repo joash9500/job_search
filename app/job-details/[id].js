@@ -1,13 +1,13 @@
 import { Text, View, SafeAreaView, ScrollView, ActivityIndicator, RefreshControl } from "react-native"
 // import navigation react routing
 import { useCallback, useState } from "react"
-import {Company, JobAbout, JobFooter, JobTabs, ScreenHeaderBtn, Specifics} from '../../components';
+import {Company, JobAbout, JobFooter, JobTabs, Specifics} from '../../components';
 import useFetch from "../../hook/useFetch";
 import {COLORS, SIZES} from "../../constants"
 
 const tabs = ["About", "Qualifications", "Responsibilities"]
 
-const JobDetails = ({route, navigation}) => {
+const JobDetails = ({route}) => {
     
     const {data, isLoading, error, refetch} = useFetch('job-details', {
         job_id: route.params.job_id
